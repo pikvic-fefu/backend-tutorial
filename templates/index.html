@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="static/style.css">
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <header><h1>Лучший сайт</h1></header>
+    <main>
+        <article>
+            <h2>Список постов:</h2>
+            {% for post in posts %}
+            <section>
+                <a href="{{ url_for('about', id=loop.index - 1)}}">
+                    <h2>{{ post.title }}</h2>
+                </a>
+                <h3>{{ post.author }} - {{ post.date }}</h3>
+                
+                <p>{{ post.text }}</p>
+                <p>
+                    {% for tag in post.tags %}
+                    <span>{{ tag }}</span>
+                    {% endfor %}
+                </p>
+            </section>
+            {% endfor %}
+        </article>
+    </main>
+    <footer></footer>
+</body>
+</html>
