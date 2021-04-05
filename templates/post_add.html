@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Добавить пост
+{% endblock title %}
+
+{% block content %}
+<h1>Добавить новый пост:</h1>
+<form action="/addpost">
+    <label>
+        Название:
+        <input type="text" id="title">
+    </label>
+    <label>
+        Автор:
+        <input type="text" id="author">
+    </label>
+    <label>
+        Дата:
+        <input type="text" id="date">
+    </label>
+    <label>
+        Текст:
+        <textarea id="text">
+        </textarea>
+    </label>
+    <label>
+        Теги:
+        <input type="text" id="tags">
+    </label>
+    <input type="submit" value="Добавить">
+</form>
+{% endblock content %}

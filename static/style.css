@@ -22,3 +22,14 @@ span:hover {
     color: #0767b0;
     background-color: ghostwhite;
 }
+
+form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+form > * {
+    margin-bottom: 10px;
+}
