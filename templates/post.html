@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html'%}
+
+{% block title %} 
+Пост номер {{ post.id }}
+{% endblock %}
+{% block content %}
     <header></header>
     <main>
         <article>
             <h2>{{ post.title }}</h2>
             <section>
-                <p>{{ post.text }}</p>
+                <p>{{ post.text | safe}}</p>
             </section>
         </article>
     </main>
     <a href="{{ url_for('index')}}">Назад к списку постов</a>
     <footer></footer>
-</body>
-</html>
+{% endblock %}

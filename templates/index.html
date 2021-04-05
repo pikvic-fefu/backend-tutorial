@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="static/style.css">
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html'%}
+
+{% block title %}
+Список постов
+{% endblock %}
+
+{% block content %}
     <header><h1>Лучший сайт</h1></header>
     <main>
         <article>
@@ -17,7 +16,7 @@
                 </a>
                 <h3>{{ post.author }} - {{ post.date }}</h3>
                 
-                <p>{{ post.text }}</p>
+                <p>{{ post.text | safe }}</p>
                 <p>
                     {% for tag in post.tags %}
                     <span>{{ tag }}</span>
@@ -28,5 +27,4 @@
         </article>
     </main>
     <footer></footer>
-</body>
-</html>
+{% endblock %}
