@@ -8,13 +8,11 @@ class Post:
         self.id = id
 
     def save_post(self, file):
-        with open(file, 'wt', encoding='utf-8') as f:
-            f.write(self.id)
-            f.write(self.title)
-            f.write(self.author)
-            f.write(self.date)
-            f.write(self.text)
-            f.write(self.tags)
+        with open(file, 'a+', encoding='utf-8') as f:
+            post = [str(self.id), self.title, self.author, self.date, self.text, self.tags, ""]
+            post = '\n'.join(post)
+            f.writelines(post)
+           
     
     def __str__(self):
         return f"{self.title} : {self.tags}"

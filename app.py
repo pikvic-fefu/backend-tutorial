@@ -1,6 +1,6 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 from datetime import datetime
-from post.post import read_posts_from_file
+from post.post import read_posts_from_file, Post
 
 DATABASE = 'posts.txt'
 
@@ -25,13 +25,16 @@ def posts_add():
 
 @app.route('/addpost', methods=['post'])
 def addpost():
-    title = request.form.get('title')  # запрос к данным формы
-    author = request.form.get('author')
-    date = request.form.get('date')
-    text = request.form.get('text')
-    tags = request.form.get('tags')
-    id = len(posts)
-    post = Post(id, title, author, date, text, tags)
-    post.save_post(DATABASE)
-    posts = read_posts_from_file(DATABASE)
+    global posts
+    if request.form:
+        title = request.form.get('title')  # запрос к данным формы
+        author = request.form.get('author')
+        date = request.form.get('date')
+        text = request.form.get('text')
+        tags = request.form.get('tags')
+        id = len(posts)
+        post = Post(id, title, author, date, text, tags)
+        print(post)
+        post.save_post(DATABASE)
+        posts = read_posts_from_file(DATABASE)
     return redirect('/')
