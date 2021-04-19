@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, request
 from datetime import datetime
-from post.post import read_posts_from_file, Post
 import sqlite3
 import os
 
