@@ -9,3 +9,7 @@ Backend tutorial for MIOPD
 4. Install required packages via `pip install -r requirements.txt`.
 5. Set environment variables for flask: `set FLASK_APP=app.py` and `set FLASK_ENV=development`.
 6. Run flask server via `flask run` command.
+
+# TODO
+
+1. Implement export/import database feature.
