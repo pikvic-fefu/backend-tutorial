@@ -19,8 +19,9 @@
                 
                 <p>{{ post.text | safe }}</p>
                 <p>
+                    {{ post.tags }}
                     {% for tag in post.tags %}
-                    <span>{{ tag }}</span>
+                    <span>{{ tag.title }}</span>
                     {% endfor %}
                 </p>
             </section>
