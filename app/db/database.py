@@ -74,3 +74,9 @@ class Database:
             tags = conn.execute(TAGS_FOR_POST, parameters).fetchall()
         tags = [dict(tag) for tag in tags]
         return tags
+
+    def select_count_for_tags(self):
+        with self.get_db_connection() as conn:
+            tags = conn.execute(SELECT_COUNT_POSTS_FOR_TAGS).fetchall()
+        tags = [dict(tag) for tag in tags]
+        return tags

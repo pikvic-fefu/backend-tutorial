@@ -25,3 +25,9 @@ INSERT_POST_TAG_QUERY = """INSERT INTO posts_tags (post_id, tag_id)
                     VALUES (?, ?)
                     """                
 
+SELECT_COUNT_POSTS_FOR_TAGS = """SELECT COUNT(pt.id) as count, tags.title as title
+                                FROM posts_tags as pt, tags
+                                WHERE pt.tag_id = tags.id 
+                                GROUP BY tags.title
+                                ORDER BY count DESC, title ASC
+                        """

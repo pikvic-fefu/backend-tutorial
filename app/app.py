@@ -14,13 +14,14 @@ db.init_db()
 @app.route('/')
 def index():
     posts = db.get_posts()
+    posts = [dict(post) for post in posts]
     for post in posts:
-        post = dict(post)
         tags = db.select_tags_for_post(post['id'])
         post["tags"] = tags
-        print(post)
-    
-    return render_template('index.html', posts=posts)
+    print(posts)
+    tags = db.select_count_for_tags()
+    print(tags)
+    return render_template('index.html', posts=posts, tags=tags)
 
 @app.route('/posts/<int:id>')
 def about(id):
