@@ -12,7 +12,7 @@
             <h2>Список постов:</h2>
             {% for post in posts %}
             <section>
-                <a href="{{ url_for('about', id=loop.index)}}">
+                <a href="{{ url_for('about', id=post.id)}}">
                     <h2>{{ post.title }}</h2>
                 </a>
                 <h3>{{ post.author }} - {{ post.date }}</h3>
