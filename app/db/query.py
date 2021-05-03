@@ -10,7 +10,7 @@ CREATE_QUERY_POSTS_TAGS = """CREATE TABLE IF NOT EXISTS posts_tags
                """
 
 TAGS_FOR_POST = """SELECT tags.id, tags.title FROM posts_tags, tags WHERE posts_tags.post_id = ? AND tags.id = posts_tags.tag_id"""
-POSTS_QUERY = """SELECT *  FROM posts"""
+POSTS_QUERY = """SELECT * FROM posts ORDER BY date DESC"""
 POST_QUERY = """SELECT * FROM posts WHERE id = ?"""
 INSERT_QUERY = """INSERT INTO posts (title, text, author, date)
                 VALUES ('Hello', 'World 123', 'Vasya', '2002-01-02')
