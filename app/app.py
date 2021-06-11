@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, jsonify
 from datetime import datetime
 import sqlite3
 import os
@@ -49,3 +49,14 @@ def addpost():
             db.insert_post_tag(post_id, tag_id)
 
     return redirect('/')
+
+@app.route('/index2')
+def index2():
+    return render_template('ajax.html')
+
+@app.route('/ajax/posts/<int:id>')
+def ajax_post(id):
+    post = db.get_post(id)
+    if not post:
+        return "", 404
+    return jsonify(dict(post))

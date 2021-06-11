@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Ajax Page
+{% endblock title %}
+
+{% block content %}
+    <header>
+        <h1>Ajax Posts</h1>
+    </header>
+    <main>
+        <h2>Current post</h2>
+        <article id="post">
+            
+        </article>
+        <div>
+            <button onclick="prev()">Prev</button><button onclick="next()">Next</button>
+        </div>
+    </main>
+{% endblock content %}
+
+{% block script %}
+    <script>
+        let post_id = 1
+
+        async function get_post(id) {
+            let url = `/ajax/posts/${id}`
+             url = 'https://jsonplaceholder.typicode.com/users'
+            let response = await fetch(url);
+            if (response.ok) {
+                let posts = await response.json();
+                console.log(posts)
+                post = posts[id - 1]
+                if (post) {
+                    element.innerHTML = `
+                        <div>${post.name}</div>
+                        <div>${post.email}</div>
+                        <div>${post.phone}</div>
+                        `
+                }
+                else {
+                    element.innerHTML = "<h2>No such post</h2>"
+                }
+            } else {
+                element.innerHTML = "<h2>No such post</h2>"
+            }
+        }
+
+        let element = document.getElementById("post")
+        
+        get_post(post_id)
+        
+        function next() {
+            console.log(post_id)
+            element.innerHTML = "Loading..."
+            post_id += 1
+            get_post(post_id)
+        }
+
+        function prev() {
+            post_id -= 1
+            element.innerHTML = "Loading..."
+            if (post_id < 1) {
+                post_id = 1
+            }
+            get_post(post_id)
+        }
+        
+
+    </script>
+{% endblock script %}
